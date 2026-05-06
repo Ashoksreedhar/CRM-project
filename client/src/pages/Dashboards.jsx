@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
+import BASE_URL from '../config'
 
 const emptyForm = { name: "", email: "", number: "", address: "" }
 
@@ -25,7 +26,7 @@ const Dashboards = () => {
 
     //API CALL FOR ADD-USERS
     try {
-      const res = await axios.post("http://localhost:5000/auth/addusers", addusers)
+      const res = await axios.post(`${BASE_URL}/auth/addusers`, addusers)
       alert(res.data.message)
       fetchData()
       setAddusers(emptyForm)
@@ -45,7 +46,7 @@ const Dashboards = () => {
     // API CALL FOR ALL-USERS
     try {
       const token = localStorage.getItem("token")
-      const res = await axios.get("http://localhost:5000/auth/allusers", {
+      const res = await axios.get(`${BASE_URL}/auth/allusers`, {
         headers: {
           Authorization: `${token}`
         }
@@ -70,7 +71,7 @@ const Dashboards = () => {
 
     //API CALL FOR DATA-DELETE
     try {
-      const res = await axios.delete(`http://localhost:5000/auth/delete/${id}`)
+      const res = await axios.delete(`${BASE_URL}/auth/delete/${id}`)
       setUsers(prevUsers =>
         prevUsers.filter(user => user._id !== id)
       )
@@ -83,7 +84,7 @@ const Dashboards = () => {
   const handleUpdate = async (e) => {
 
     try {
-      await axios.put(`http://localhost:5000/auth/update/${edit}`, addusers)
+      await axios.put(`${BASE_URL}/auth/update/${edit}`, addusers)
     } catch (error) {
 
     }

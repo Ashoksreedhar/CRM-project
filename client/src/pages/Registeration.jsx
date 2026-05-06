@@ -4,7 +4,7 @@ import *  as yup from "yup"
 import axios from "axios"
 // import { jsx } from 'react/jsx-runtime'
 import { useNavigate } from 'react-router-dom'
-
+import BASE_URL from '../config'
 
 
 //yup-schema
@@ -61,7 +61,7 @@ const Registeration = () => {
 
 
       //API CALL
-      const res = await axios.post("http://localhost:5000/auth/register", form)
+      const res = await axios.post(`${BASE_URL}/auth/registeration`, form)
       alert(JSON.stringify(res.data))
       navigate('/login')
 

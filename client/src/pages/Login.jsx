@@ -3,6 +3,7 @@ import { useState } from 'react'
 import * as yup from "yup"
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import BASE_URL from '../config'
 
 
 const schema = yup.object({
@@ -48,7 +49,7 @@ const Login = () => {
 
       //API CALL
 
-      const res = await axios.post("http://localhost:5000/auth/login", form)
+      const res = await axios.post(`${BASE_URL}/auth/login`, form)
       if (res.data.error) {
         alert(res.data.error)
         return
