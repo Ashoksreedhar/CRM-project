@@ -61,7 +61,7 @@ const Registeration = () => {
 
 
       //API CALL
-      const res = await axios.post(`${BASE_URL}/auth/registeration`, form)
+      const res = await axios.post(`${BASE_URL}/auth//register`, form)
       alert(JSON.stringify(res.data))
       navigate('/login')
 

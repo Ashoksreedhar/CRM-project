@@ -50,9 +50,8 @@ const Dashboards = () => {
         headers: {
           Authorization: `${token}`
         }
-      }
-
-      )
+      })
+       console.log(res.data)
       setUsers(res.data.data)
     } catch (error) {
       if (error.response) {
