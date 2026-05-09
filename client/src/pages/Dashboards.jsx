@@ -2,7 +2,6 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import BASE_URL from '../config'
-import { set } from 'mongoose'
 
 const emptyForm = { name: "", email: "", number: "", address: "" }
 
