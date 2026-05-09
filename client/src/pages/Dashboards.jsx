@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import BASE_URL from '../config'
+import { set } from 'mongoose'
 
 const emptyForm = { name: "", email: "", number: "", address: "" }
 
@@ -80,9 +81,13 @@ const Dashboards = () => {
   }
 
   const handleUpdate = async (e) => {
-
+    e.preventDefault()
     try {
-      await axios.put(`${BASE_URL}/auth/update/${edit}`, addusers)
+      const res = await axios.put(`${BASE_URL}/auth/update/${edit}`, addusers)
+      alert(res.data.message)
+      fetchData()
+      setEdit(null)
+      setAddusers(emptyForm)
     } catch (error) {
 
     }
